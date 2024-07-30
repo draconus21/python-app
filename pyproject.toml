@@ -1,0 +1,54 @@
+[build-system]
+  build-backend="setuptools.build_meta"
+  requires     =[ "setuptools" ]
+
+[project]
+  authors=[ { name="Neeth Kunnath", email="neeth.xavier@gmail.com" } ]
+  classifiers=[
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.10"
+  ]
+  dependencies=[ "pydantic>=2.0", "click", "numpy" ]
+  description="A simple python app w/ REST"
+  dynamic=[ "readme" ]
+  keywords=[ "python", "rest" ]
+  license={ text="MIT license" }
+  name="pyapp"
+  requires-python=">=3.10"
+  version="1.0"
+
+[project.optional-dependencies]
+  dev=[ "black", "build" ]
+
+[tool.setuptools.dynamic]
+  readme={ file=[ "README.md" ] }
+  #[project.scripts]
+  #  "wordle"="wordle.wordle:run"
+  #[tool.setuptools.packages.find]
+  #  include=[ "wordle" ]
+  #[tool.setuptools.package-data]
+  #  wordle=[ "data/*.json" ]
+
+[tool.black]
+  force-exclude='''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.env
+    | _build
+    | buck-out
+    | build
+    | dist
+    | airyPyOptics
+  )/
+)
+'''
+  ignore="E501"
+  line-length=120
